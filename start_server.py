@@ -13,7 +13,7 @@ def index1():
     return render_template('index.html')
 
 
-@app.route('/data.json')
+@app.route('/templates/data.json')
 def get_data(): 
     print("Get data")
     if os.path.isfile("./templates/data.json") == True:
@@ -22,7 +22,7 @@ def get_data():
                     mimetype='text/plain') 
     else:
      return "404 Not found", 404
-@app.route('/index_data.json')
+@app.route('/templates/index_data.json')
 def get_data1(): 
     print("Get data")
     if os.path.isfile("./templates/index_data.json") == True:
@@ -32,7 +32,7 @@ def get_data1():
     else:
      return "404 Not found", 404
 
-@app.route('/update_date.json')
+@app.route('/templates/update_date.json')
 def get_data2(): 
     print("Get data")
     if os.path.isfile("./templates/update_date.json") == True:

@@ -148,3 +148,10 @@ sleep = 30 #分钟
 
 然后只要访问**你的网站/templates/index.html**就能查看面板
 
+
+
+# 关于
+
+欢迎访问：https://lxscloud.top/2021/07/21/Nginx%20log%20helper--%E5%8F%AF%E8%A7%86%E5%8C%96Nginx%20Log%E6%95%B0%E6%8D%AE%E9%9D%A2%E6%9D%BF/
+
+~~下次更新应该会加时区转换~~

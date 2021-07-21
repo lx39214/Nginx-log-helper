@@ -314,6 +314,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 
 <script>
+var url_ = "/templates/";
 //英文月份转数字
 var date_map = new Array ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 var date_map2 = new Array ("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
@@ -366,7 +367,7 @@ function count_json(json_in) {
 document.getElementById("card2").innerHTML = "aa";
 document.getElementById("card3").innerHTML = "aa";
 //对详细信息进行处理
-fetch("/data.json")
+fetch(url_+"data.json")
   .then(function(response) {
     return response.json();
   })
@@ -629,7 +630,7 @@ fetch("/data.json")
     //获取单日主页请求数
     var count_get_ind = new Array();
     arr_index_get = 0;
-    fetch("/index_data.json")
+    fetch(url_+"index_data.json")
     .then(function(response) {
       return response.json();
     })
@@ -724,7 +725,7 @@ fetch("/data.json")
 
 });
 //请求过主页的信息
-fetch("/index_data.json")
+fetch(url_+"index_data.json")
   .then(function(response) {
     return response.json();
   })
@@ -738,7 +739,7 @@ fetch("/index_data.json")
     document.getElementById("index_page_num").innerHTML = ind_num_c;
   });
 //获取更新日期
-fetch("/update_date.json")
+fetch(url_+"update_date.json")
   .then(function(response) {
     return response.json();
   })
