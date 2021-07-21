@@ -128,7 +128,7 @@ python3 start_server.py
 
 将templates文件夹放在你的web服务器（nginx）的网页目录
 
-
+* 记得修改run.py的配置
 
 * 配置文件修改一下，使生成的json放到web服务器（nginx）的网页目录的templates文件夹
 
