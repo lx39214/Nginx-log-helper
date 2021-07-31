@@ -77,35 +77,41 @@
   test.gene_json(0, file_n = "index_data.json", sort=["/static/img_ness/beian/beian"])
   ```
 
-  可以设置开启IP显示(后面的生成json的文件名不需要修改)
+  可以设置开启IP显示,只要把0改成1(**index_data.json**和**data.json**的文件名一般不需要修改)
 
   ```python
   test.gene_json(1, file_n = "data.json")
   test.gene_json(1, file_n = "index_data.json", sort=["/static/img_ness/beian/beian"])
   ```
 
-  sort sort_not参数是用于设置条件
+  sort sort_not参数是用于设置条件， sort用于设置要求出现的URL，sort_no用于排除某个URL，这两个变量的数据类型为list（是**[ ]**）
 
+  * 当sort_not被设置时，生成的JSON中就不会包含设置的URL
+
+  * 当sort被设置时，生成的JSON中就只包含设置的URL
+  
   sort中的”/static/img_ness/beian/beian“请改成你的主页一定会被请求到的一个文件，以计算主页的访问量
-
+  
   ```
   sort=["/static/img_ness/beian/beian"]
   ```
   
-  用于设置生成目录，"./templates/"意思是在当前文件夹下的templates文件夹里生成json
+用于设置生成目录，"./templates/"意思是在当前文件夹下的templates文件夹里生成json
   ```
-  ./templates/
+./templates/
   ```
-
+  
   配置修改完就可以开始生成json
 
   ```bash
   python3 nginx_log_helper.py
   ```
-
+  
   如果access.log的位置没有错误，将会在templates文件夹里出现data.json、index_data.json、update_date.json三个新文件
 
 ![7](/img/7.jpg)
+
+* nginx_log_helper.py为测试时使用，实际使用请使用run.py
 
 #### 试用
 
@@ -120,15 +126,35 @@ python3 start_server.py
   ```
   
 
+* **为了安全**，start_server.py仅供本地测试的时候使用
+
+### 如果需要部署到网站
+
+#### 要求
+
+**要求WEB服务器为Nginx**
+
+**要求Python版本为Python3.5或以上**
+
+安装python3(在debian或者ubuntu)：
+
+```
+sudo apt-get install python3 python3-pip
+```
+
+**可能需要安装pytz包**
+
+```
+pip3 install pytz
+```
 
 
-### 部署到网站
 
-* 觉得有需要，可以部署到你的网站
+#### 建议&&使用方法
 
 将templates文件夹放在你的web服务器（nginx）的网页目录
 
-* 记得修改run.py的配置
+* 记得修改run.py的配置，改成你期望的样子
 
 * 配置文件修改一下，使生成的json放到web服务器（nginx）的网页目录的templates文件夹
 
@@ -144,14 +170,14 @@ nohup python3 run.py &
 sleep = 30 #分钟
 ```
 
+然后只要访问**你的网站的网址/templates/index.html**就能查看面板
 
 
-然后只要访问**你的网站/templates/index.html**就能查看面板
 
-
+（建议使用计划任务来运行）
 
 # 关于
 
-欢迎访问：https://lxscloud.top/2021/07/21/Nginx%20log%20helper--%E5%8F%AF%E8%A7%86%E5%8C%96Nginx%20Log%E6%95%B0%E6%8D%AE%E9%9D%A2%E6%9D%BF/
+欢迎访问我的博客：https://blog.lxscloud.top/2021/07/21/Nginx%20log%20helper--%E5%8F%AF%E8%A7%86%E5%8C%96Nginx%20Log%E6%95%B0%E6%8D%AE%E9%9D%A2%E6%9D%BF/
 
 ~~下次更新应该会加时区转换~~

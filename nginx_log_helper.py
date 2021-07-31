@@ -45,7 +45,7 @@ class nginx_read_log:
       for line in f.readlines(): #读行
         logs_lines = line
 
-        ip_addr_read = logs_lines[0:logs_lines.index(" - - [")] #读取访问ip
+        ip_addr_read = logs_lines[0:logs_lines.index(" - ")] #读取访问ip
         time_detail = logs_lines[logs_lines.find('[')+1:logs_lines.find(':')+15]
 
         logs_lines = logs_lines[logs_lines.index('"'):logs_lines.rindex('"')+1] #左边部分处理完成，截取右边部分
