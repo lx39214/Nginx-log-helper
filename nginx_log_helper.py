@@ -43,23 +43,28 @@ class nginx_read_log:
   def read_file(self):
     with open(self.filepath, "r" , encoding = 'utf-8') as f:
       for line in f.readlines(): #读行
+        fetch_info = []
         logs_lines = line
 
         ip_addr_read = logs_lines[0:logs_lines.index(" - ")] #读取访问ip
-        time_detail = logs_lines[logs_lines.find('[')+1:logs_lines.find(':')+15]
+        time_detail = logs_lines[logs_lines.find('[')+1:logs_lines.find(':')+15]#获取时间
 
         logs_lines = logs_lines[logs_lines.index('"'):logs_lines.rindex('"')+1] #左边部分处理完成，截取右边部分
         more_detail = logs_lines.split(' "')
         for list_index, list_item in enumerate(more_detail):
-          more_detail[list_index] = list_item.replace('"', "")#去掉“
+          more_detail[list_index] = list_item.replace('"', "")#去掉“，然后就会获得请求、referer和ua
         
+        #获取请求，去除杂乱信息（去除状态码和HTTP1.1）
+        info_ = more_detail[0]
+        fetch_info = info_[info_.find("/"):info_.find("HTTP")]
+
         #debug
         #print("ip: {}, time: {}".format(ip_addr_read, time_detail))
-        #print("detail: {}\n{}\n{}\n".format(more_detail[0], more_detail[1], more_detail[2]))
+        #print("detail: {}\n{}\n{}\n{}\n".format(more_detail[0], more_detail[1], more_detail[2], fetch_info))
         
         #存储到dict
         #键值："ip" "time" "info" "url" "ua" "ext"
-        dict_detail = {"ip" :  ip_addr_read, "time" : time_detail, "info" : more_detail[0], "url" : more_detail[1], "ua" : more_detail[2]}
+        dict_detail = {"ip" :  ip_addr_read, "time" : time_detail, "info" : info_, "fetch" : fetch_info, "url" : more_detail[1], "ua" : more_detail[2]}
         self.list_inf.append(dict_detail)
 
   #未完成部分

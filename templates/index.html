@@ -179,20 +179,20 @@
                 <div class="card">
                   <div class="card-header bg-white p-0" id="headingOne">
                     <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseOne"
-                      aria-expanded="true" aria-controls="collapseOne">网址请求次数排名</a>
+                      aria-expanded="true" aria-controls="collapseOne">请求路径次数统计</a>
                   </div>
 
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                     data-parent="#accordionExample">
                     <div class="card-body para__style">
-                      <div id="card1"></div>
+                      <div id="card1">Loading...请稍等</div>
                     </div>
                   </div>
                 </div>
                 <div class="card">
                   <div class="card-header bg-white p-0" id="headingTwo">
                     <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseTwo"
-                      aria-expanded="false" aria-controls="collapseTwo">使用的最多的浏览器</a>
+                      aria-expanded="false" aria-controls="collapseTwo">Referer次数统计</a>
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body para__style">
@@ -203,7 +203,7 @@
                 <div class="card">
                   <div class="card-header bg-white p-0" id="headingThree">
                     <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseThree"
-                      aria-expanded="false" aria-controls="collapseThree">访问最多的IP</a>
+                      aria-expanded="false" aria-controls="collapseThree">浏览器次数统计</a>
                   </div>
                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                     data-parent="#accordionExample">
@@ -216,7 +216,7 @@
                 <div class="card">
                   <div class="card-header bg-white p-0" id="headingFour">
                     <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseFour"
-                      aria-expanded="false" aria-controls="collapseFour">原始数据</a>
+                      aria-expanded="false" aria-controls="collapseFour">IP数量次数统计</a>
                   </div>
                   <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
                     data-parent="#accordionExample">
@@ -225,7 +225,19 @@
                     </div>
                   </div>
                 </div>
-
+                <div class="card">
+                  <div class="card-header bg-white p-0" id="headingFive">
+                    <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseFive"
+                      aria-expanded="false" aria-controls="collapseFive">原始数据</a>
+                  </div>
+                  <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                    data-parent="#accordionExample">
+                    <div class="card-body para__style">
+                      <div id="card5"></div>
+                    </div>
+                  </div>
+                </div>
+				
               </div>
             </div>
           </div>
@@ -421,6 +433,7 @@ fetch(url_+"data.json")
         }
       }
     }
+	all_date1 = all_date1.sort();//对时间进行升序排序
     for (var aa in all_date1) {
       count_get1[arr_index_get1] = 0;
       for (var xx in myJson) {
@@ -439,12 +452,24 @@ fetch(url_+"data.json")
     //获取请求网址
     var count_url = new Array();
     var count_url_count = new Array();
+	var count_fet = new Array();
+    var count_fet_count = new Array();
     var count_url_index = 0;
+	var count_fet_index = 0;
     for (var xx in myJson) {
       for (var yy in myJson[xx][1]) {
         var data_url = myJson[xx][1][yy].url;
+		var data_fet = myJson[xx][1][yy].fetch;
         //console.log(data_url);
-        if (count_url.length == 0) {
+		if (count_fet.length) {
+		  count_fet[count_fet_index] = data_fet;
+		  count_fet_index++;
+		} else if (val_in(count_fet, data_fet) == false) {
+		  count_fet[count_fet_index] = data_fet;
+		  count_fet_index++;
+		}
+		
+        if (count_url.length == 0 && data_url !== "-") {
           count_url[count_url_index] = data_url;
           count_url_index++;
         } else if (val_in(count_url, data_url) == false && data_url !== "-") {
@@ -466,20 +491,45 @@ fetch(url_+"data.json")
       }
       count_url_index++;
     }
+	count_fet_index = 0;
+    for (var aa in count_fet) {
+      count_fet_count[count_fet_index] = 0;
+      for (var xx in myJson) {
+        for (var yy in myJson[xx][1]) {
+          if (myJson[xx][1][yy].fetch == count_fet[aa]) {
+            count_fet_count[count_fet_index]++;
+          }
+        }
+      }
+      count_fet_index++;
+    }
+	var count_fet_dict = new Array();
+    for (var aa in count_fet) {
+      count_fet_dict[count_fet[aa]] = count_fet_count[aa];
+    }
+	console.log(count_fet_dict);
     var count_url_dict = new Array();
     for (var aa in count_url) {
       count_url_dict[count_url[aa]] = count_url_count[aa];
       //console.log(count_url_count[aa]);
     }
     //console.log(count_url_dict);
-    var res2 = Object.keys(count_url_dict).sort(function(b,a){ return count_url_dict[a]-count_url_dict[b]; }); // 字典元素按value值排序
+	
+	var res2 = Object.keys(count_url_dict).sort(function(b,a){ return count_url_dict[a]-count_url_dict[b]; }); // 字典元素按value值排序
+    var res3 = Object.keys(count_fet_dict).sort(function(b,a){ return count_fet_dict[a]-count_fet_dict[b]; }); // 字典元素按value值排序
     var str_html = "";
     for(var key in res2){ 
        str_html += "<li><b>" + count_url_dict[res2[key]] + "次 :  </b><a href='"+res2[key]+"'>"+ res2[key] +"<a></li><br />";
         //console.log(res2[key] + ' : ' + count_url_dict[res2[key]]);
     }
+    document.getElementById("card2").innerHTML = str_html;
+	str_html = "";
+	for(var key in res3){ 
+       str_html += "<li><b>" + count_fet_dict[res3[key]] + "次 :  </b><a href='"+res3[key]+"'>"+ res3[key] +"<a></li><br />";
+    }
     document.getElementById("card1").innerHTML = str_html;
-    //获取请求浏览器
+    
+	//获取请求浏览器
     count_url = new Array();
     count_url_count = new Array();
     count_url_index = 0;
@@ -521,7 +571,7 @@ fetch(url_+"data.json")
        str_html += "<li><b>" + count_url_dict[res2[key]] + "次 :  </b>" + res2[key] +"</li><br />";
         //console.log(res2[key] + ' : ' + count_url_dict[res2[key]]);
     }
-    document.getElementById("card2").innerHTML = str_html;//改变卡片的值
+    document.getElementById("card3").innerHTML = str_html;//改变卡片的值
 
     //获取请求IP
     count_url = new Array();
@@ -569,14 +619,14 @@ fetch(url_+"data.json")
     var api = "";
     if (str_html.indexOf("ID") >= 0) {
       add_str = "<b>用户可能关闭了IP显示，替代为显示ID</b><br /><br />";
-      document.getElementById("card3").innerHTML = add_str + str_html;//改变卡片的值
+      document.getElementById("card4").innerHTML = add_str + str_html;//改变卡片的值
     } else {
       str_html = "";
       for(var key in res2){ 
        str_html += "<li><b>" + count_url_dict[res2[key]] + "次 :  </b>" + res2[key] +"</li><br />";
         //console.log(res2[key] + ' : ' + count_url_dict[res2[key]]);
       }
-      document.getElementById("card3").innerHTML = add_str + str_html;//改变卡片的值
+      document.getElementById("card4").innerHTML = add_str + str_html;//改变卡片的值
     }
     //获取请求浏览器
     count_url = new Array();
@@ -600,7 +650,7 @@ fetch(url_+"data.json")
     for (var xx in myJson) {
       for (var yy in myJson[xx][1]) {
         if (myJson[xx][1][yy].url !== "-") {
-          str_html += "<li><b>" + myJson[xx][1][yy].ip + " :  </b><li>URL: <a href='"+ myJson[xx][1][yy].url +"''>" + myJson[xx][1][yy].url +"</a></li>";
+          str_html += "<li><b>" + myJson[xx][1][yy].ip + " :  </b><li>Referer: <a href='"+ myJson[xx][1][yy].url +"''>" + myJson[xx][1][yy].url +"</a></li>";
           str_html += "<li>UA: " + myJson[xx][1][yy].ua + "</li>";
           str_html += "<li>Time: " + myJson[xx][1][yy].time + "</li>";
           str_html += "<li>Info: " + myJson[xx][1][yy].info + "</li>";
@@ -608,7 +658,7 @@ fetch(url_+"data.json")
         }
       }
     }
-    document.getElementById("card4").innerHTML = str_html;//改变卡片的值
+    document.getElementById("card5").innerHTML = str_html;//改变卡片的值
 
     //获取单日总请求数
     for (var aa in all_date) {
@@ -625,7 +675,9 @@ fetch(url_+"data.json")
       }
       arr_index_get++;
     }
+	all_date = all_date.sort();//对日期进行升序排序
     //console.log(count_get);
+	//console.log(all_date);
     
     //获取单日主页请求数
     var count_get_ind = new Array();
@@ -654,7 +706,7 @@ fetch(url_+"data.json")
       }
     });
     //console.log(count_get_ind);
-
+    
     new Chart(document.getElementById("barchart"), {
 	    type: 'bar',
 	    data: {
