@@ -1,0 +1,1098 @@
+
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>主页</title>
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style-starter.css">
+
+  <!-- google fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
+</head>
+
+<body class="sidebar-menu-collapsed">
+  <div class="se-pre-con"></div>
+<section>
+  <!-- sidebar menu start -->
+  <div class="sidebar-menu sticky-sidebar-menu">
+
+    <!-- logo start -->
+    <div class="logo">
+      <h1><a href="index.html">收集</a></h1>
+    </div>
+
+  <!-- if logo is image enable this -->
+    <!-- image logo --
+    <div class="logo">
+      <a href="index.html">
+        <img src="image-path" alt="Your logo" title="Your logo" class="img-fluid" style="height:35px;" />
+      </a>
+    </div>
+    <!-- //image logo -->
+
+    <div class="logo-icon text-center">
+      <a href="index.html" title="logo"><img src="assets/images/logo.png" alt="logo-icon"> </a>
+    </div>
+    <!-- //logo end -->
+
+    <div class="sidebar-menu-inner">
+
+      <!-- sidebar nav start -->
+      <ul class="nav nav-pills nav-stacked custom-nav">
+        <li class="active"><a href="index.html"><i class="fa fa-tachometer"></i><span> 面板</span></a>
+        </li>
+        <li class="menu-list">
+        </li>
+      </ul>
+      <!-- //sidebar nav end -->
+      <!-- toggle button start -->
+      <a class="toggle-btn">
+        <i class="fa fa-angle-double-left menu-collapsed__left"><span>Collapse Sidebar</span></i>
+        <i class="fa fa-angle-double-right menu-collapsed__right"></i>
+      </a>
+      <!-- //toggle button end -->
+    </div>
+  </div>
+  <!-- //sidebar menu end -->
+  <!-- header-starts -->
+  <div class="header sticky-header">
+
+    <!-- notification menu start -->
+    <div class="menu-right">
+      <div class="navbar user-panel-top">
+        <div class="search-box">
+          <form action="#search-results.html" method="get">
+            <input class="search-input" placeholder="搜素是不能用的..." type="search" id="search">
+            <button class="search-submit" value=""><span class="fa fa-search"></span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--notification menu end -->
+  </div>
+  <!-- //header-ends -->
+  <!-- main content start -->
+<div class="main-content">
+
+  <!-- content -->
+  <div class="container-fluid content-top-gap">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb my-breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">主页</a></li>
+        <li class="breadcrumb-item active" aria-current="page">面板</li>
+      </ol>
+    </nav>
+    <div class="welcome-msg pt-3 pb-4">
+      <h1><span class="text-primary">你好</span>, 欢迎访问</h1>
+      <p>数据显示面板-数据为下面日期内的数据</p>
+    </div>
+
+    <!-- statistics data -->
+    <div class="statistics">
+      <div class="row">
+        <div class="col-xl-6 pr-xl-2">
+          <div class="row">
+            <div class="col-sm-6 pr-sm-2 statistics-grid">
+              <div class="card card_border border-primary-top p-4">
+                <i class="lnr lnr-users"> </i>
+                <h3 class="text-primary number"><div id="index_page_num"></div></h3>
+                <p class="stat-text">博客主页真实IP访问次数</p>
+              </div>
+            </div>
+            <div class="col-sm-6 pl-sm-2 statistics-grid">
+              <div class="card card_border border-primary-top p-4">
+                <i class="lnr lnr-eye"> </i>
+                
+                <h3 class="text-secondary number"><div id="ip_num"></div></h3>
+                <p class="stat-text">访问IP数</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- //statistics data -->
+
+    <!-- charts -->
+    <div class="chart">
+      <div class="row">
+        <div class="col-lg-6 pr-lg-2 chart-grid">
+          <div class="card text-center card_border">
+            <div class="card-header chart-grid__header">
+              请求次数
+            </div>
+            <div class="card-body">
+              <!-- bar chart -->
+              <div id="container">
+                <canvas id="barchart"></canvas>
+              </div>
+              <!-- //bar chart -->
+            </div>
+            <div class="card-footer text-muted chart-grid__footer">
+              <div id="update_date"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 pl-lg-2 chart-grid">
+          <div class="card text-center card_border">
+            <div class="card-header chart-grid__header">
+              时间段
+            </div>
+            <div class="card-body">
+              <!-- line chart -->
+              <div id="container">
+                <canvas id="linechart"></canvas>
+              </div>
+              <!-- //line chart -->
+            </div>
+            <div class="card-footer text-muted chart-grid__footer">
+              <div id="update_date1"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- //charts -->
+
+
+
+    <!-- accordions -->
+    <div class="accordions">
+      <div class="row">
+        <!-- accordion style 1 -->
+        <div class="col-lg-12 mb-4">
+          <div class="card card_border">
+            <div class="card-header chart-grid__header">
+              具体信息
+            </div>
+            <div class="card-body">
+              <div class="accordion" id="accordionExample">
+
+                <div class="card">
+                  <div class="card-header bg-white p-0" id="headingOne">
+                    <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseOne"
+                      aria-expanded="true" aria-controls="collapseOne">请求路径次数统计</a>
+                  </div>
+
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body para__style">
+                      <div id="card1">Loading...请稍等</div>
+                      <div id="card1-1">
+                        <div class="card text-center card_border">
+                          <div class="card-body">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary btn-style" onclick="load_more_fetch_tri()">
+                              加载剩余数据
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header bg-white p-0" id="headingTwo">
+                    <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseTwo"
+                      aria-expanded="false" aria-controls="collapseTwo">浏览器次数统计</a>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body para__style">
+                      <div id="card3"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header bg-white p-0" id="headingThree">
+                    <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseThree"
+                      aria-expanded="false" aria-controls="collapseThree">Referer次数统计</a>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                    data-parent="#accordionExample">
+                    <div class="card-body para__style">
+                      <div id="card2"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="card-header bg-white p-0" id="headingFour">
+                    <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseFour"
+                      aria-expanded="false" aria-controls="collapseFour">IP数量次数统计</a>
+                  </div>
+                  <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                    data-parent="#accordionExample">
+                    <div class="card-body para__style">
+                      <div id="card4"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header bg-white p-0" id="headingFive">
+                    <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseFive"
+                      aria-expanded="false" aria-controls="collapseFive">原始数据</a>
+                  </div>
+                  <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                    data-parent="#accordionExample">
+                    <div class="card-body para__style">
+                      <div id="card5"></div>
+                    </div>
+                  </div>
+                </div>
+				
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- //accordion style 1 -->
+      </div>
+    </div>
+    <!-- //accordions -->
+
+  <!-- 模态框 -->
+  <div class="modal fade" id="myModal-ua-track">
+    <div class="modal-dialog">
+      <div class="modal-content">
+   
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+          <h4 class="modal-title"><div id="title-track-model"></div></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+   
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+          <div id="ua-track-model"></div>
+        </div>
+   
+        <!-- 模态框底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        </div>
+   
+      </div>
+    </div>
+  </div>
+  <!-- 模态框 -->
+
+  </div>
+  <!-- //content -->
+</div>
+<!-- main content end-->
+</section>
+  <!--footer section start-->
+<footer class="dashboard">
+  <p>Copyright &copy; 2021.Project named <a target="_blank" href="https://github.com/lx39214/Nginx-log-helper">Nginx-log-helper</a></p>
+</footer>
+<!--footer section end-->
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- /move top -->
+
+
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/jquery-1.10.2.min.js"></script>
+
+<!-- chart js -->
+<script src="assets/js/Chart.min.js"></script>
+<script src="assets/js/utils.js"></script>
+<!-- //chart js -->
+
+<!-- Different scripts of charts.  Ex.Barchart, Linechart -->
+<!--<script src="assets/js/linechart.js"></script> -->
+<!-- //Different scripts of charts.  Ex.Barchart, Linechart -->
+
+
+<script src="assets/js/jquery.nicescroll.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+
+<!-- disable body scroll when navbar is in active -->
+<script>
+  $(function () {
+    $('.sidebar-menu-collapsed').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll when navbar is in active -->
+
+ <!-- loading-gif Js -->
+ <script src="assets/js/modernizr.js"></script>
+ <script>
+     $(window).load(function () {
+         // Animate loader off screen
+         $(".se-pre-con").fadeOut("slow");;
+     });
+ </script>
+ <!--// loading-gif Js -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<script>
+var url_ = "/dashboard/";
+//英文月份转数字
+var date_map = new Array ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+var date_map2 = new Array ("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+var data_json_obj, data_trans_finished = false;
+var data_morinfo_fetch_obj, data_morinfo_fetch_finished = false;
+var data_remain = new Array(), data_remain_id_index = 0;
+var data_track_ua = new Array(), data_track_fet = new Array();
+//英文月份转数字
+function map_find_index(strInput) {
+  var data_ = 0;
+  for (var x in date_map) {
+    if (strInput === date_map[x]) {
+      data_ = x;
+      break;
+    }
+  }
+  return date_map2[data_];
+}
+//时间字符串处理
+function str_deal_time(strtime_nginx_log) {
+  var str_array = strtime_nginx_log.split("/");
+  var _day = str_array[0];
+  var _month = map_find_index(str_array[1]);
+  var _year = strtime_nginx_log.slice(strtime_nginx_log.lastIndexOf("/")+1, strtime_nginx_log.indexOf(":"));
+  strtime_nginx_log = strtime_nginx_log.slice(strtime_nginx_log.indexOf(":")+1, strtime_nginx_log.lastIndexOf("00"));
+  str_array = strtime_nginx_log.split(":");
+  return {"year" : _year, "month" : _month, "day":_day, "hour" : str_array[0], "minute" : str_array[1], "second" : str_array[2]};
+}
+//str_deal_time("19/Jul/2021:17:25:22 +0800");
+
+//判断值是否在数组里
+function val_in(array_in, val_check) {
+  var result_ = false;
+  for (var x in array_in) {
+    if (val_check === array_in[x]) {
+      result_ = true;
+      break;
+    }
+  }
+  return result_;
+}
+//var all_in1 = new Array("a", "b", "c");
+//console.log(val_in(all_in1, "d"));
+
+//对json对象计数
+function count_json(json_in) {
+  var num_j = 0;
+  for (x in json_in) {
+    num_j++;
+  }
+  return num_j;
+}
+//根据UA追踪
+function track_ua(array_data_input, ua_info_in, mode=3) {
+  var temp_da = new Array();
+
+  for (var data_item in array_data_input) {
+    if (mode == 3) {
+      temp_da = array_data_input[data_item][0].ua;
+      document.getElementById("title-track-model").innerHTML = "通过User Agent来追踪";
+    } else if (mode == 1) {
+      temp_da = array_data_input[data_item][0].fetch;
+      document.getElementById("title-track-model").innerHTML = "通过请求追踪";
+    }
+    if (temp_da == ua_info_in) {
+      var data_track_ua_str_html = "";
+      for (it_000 in array_data_input[data_item][1]) {
+        data_track_ua_str_html += "<li>"+ array_data_input[data_item][1][it_000] +"</li><br />";
+      }
+
+      document.getElementById("ua-track-model").innerHTML = data_track_ua_str_html;
+      break;
+    }
+  }
+}
+function track_ua_fet(array_data_input, ua_info_in, mode=3) {
+  var temp_da = new Array();
+  
+  for (var data_item in array_data_input) {
+    if (mode == 3) {
+      temp_da = array_data_input[data_item][0].ua;
+    } else if (mode == 1) {
+      temp_da = array_data_input[data_item][0].fetch;
+    }
+    if (temp_da == ua_info_in) {
+      return array_data_input[data_item][2];//返回数组索引2的值，即请求情况数据，索引为1为请求和时间的字符串等数据
+    }
+  }
+}
+//根据UA追踪END
+//检测请求情况
+function check_info(info_input) {
+  if (info_input.indexOf("HTTP/1.1 404") > 0) return 404;
+  else if (info_input.indexOf("HTTP/1.1 400") > 0) return 400;
+  else return 0;
+}
+
+//无用，可删
+document.getElementById("card2").innerHTML = "Loading...";
+document.getElementById("card3").innerHTML = "Loading...";
+
+
+//请求过主页的信息
+var count_get_ind_finished = false, count_get_ind_json_obj;
+fetch(url_+"index_data.json")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    var ind_num_c = 0;
+    count_get_ind_json_obj = myJson;
+    count_get_ind_finished = true;
+    for (var x in myJson) {
+      if (count_json(myJson[x][1]) != 0) {
+        ind_num_c++;
+      }
+    }
+    document.getElementById("index_page_num").innerHTML = ind_num_c;
+  });
+
+
+    
+
+//获取更新日期
+fetch(url_+"update_date.json")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    //console.log(myJson);
+
+    var today = new Date();
+    var someday;
+    someday = new Date();
+    var array_time = myJson["hms"].split(":");
+    someday.setFullYear(myJson["year"]);
+    someday.setMonth(parseInt(myJson["month"])-1);
+    someday.setDate(myJson["day"]);
+    someday.setHours(array_time[0]);
+    someday.setMinutes(array_time[1]);
+    someday.setSeconds(array_time[2]);
+    var message_t = "";
+    if (today > someday) {
+      var time_C = today-someday;
+      
+      time_C = time_C / 1000;
+      var str_t = "";
+      if (time_C < 60) {
+        message_t = "刚刚更新";
+      } else if (time_C < 3600 && time_C >= 60) {
+        str_t += (time_C/60);
+        message_t = str_t.slice(0,str_t.indexOf(".")) + "分钟前更新";
+      } else if (time_C >= 3600 && time_C < 3600*24) {
+        str_t += (time_C/3600);
+        message_t = str_t.slice(0,str_t.indexOf(".")) + "小时前更新";
+      } else if (time_C >= 3600*24) {
+        str_t += (time_C/3600/24);
+        message_t = str_t.slice(0,str_t.indexOf(".")) + "天前更新";
+      }
+    }
+    document.getElementById("update_date").innerHTML = message_t;
+    document.getElementById("update_date1").innerHTML = message_t;
+});
+
+
+//对详细信息进行处理
+fetch(url_+"data.json")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    //console.log(myJson);
+    data_json_obj = myJson;
+    data_trans_finished = true;
+
+});
+
+
+//图表处理
+function deal_data_chart(myJson) {
+    var all_date = new Array();
+    var all_date1 = new Array();
+    var count_get = new Array();
+    var arr_index = 0;
+    var arr_index1 = 0;
+    var arr_index_get = 0;
+    //获取日期数据-月份-日期
+    for (var xx in myJson) {
+      //console.log(myJson[x][1]);
+      for (var yy in myJson[xx][1]) {
+        var data_rd = myJson[xx][1][yy].time_detail;//获取时间对象
+        var data_rd0;//存储日期数据-月份-日期的变量
+        var data_rd1;//存储日期数据-月份-日期加具体小时的变量
+
+        data_rd0 = data_rd.year+"/"+map_find_index(data_rd.month)+"/"+data_rd.day;
+        data_rd1 = data_rd.year+"/"+map_find_index(data_rd.month)+"/"+data_rd.day+"-"+str_deal_time(myJson[xx][1][yy].time).hour+"时";
+
+        //获取不重复的日期数据-月份-日期
+        if (all_date.length == 0) {
+          all_date[arr_index] = data_rd0;
+          arr_index++;
+        } else {
+          if (val_in(all_date, data_rd0) == false) {
+              all_date[arr_index] = data_rd0;
+              arr_index++;
+          }
+        }
+        //获取不重复的日期数据-月份-日期加具体小时
+        if (all_date1.length == 0) {
+          all_date1[arr_index1] = data_rd1;
+          arr_index1++;
+        } else {
+          if (val_in(all_date1, data_rd1) == false) {
+              all_date1[arr_index1] = data_rd1;
+              arr_index1++;
+          }
+        }
+      }
+    }
+
+
+    var count_get1 = new Array();
+    var arr_index_get1 = 0;
+    
+
+	  all_date1 = all_date1.sort();//对时间进行升序排序
+    for (var aa in all_date1) {
+      count_get1[arr_index_get1] = 0;
+      for (var xx in myJson) {
+        for (var yy in myJson[xx][1]) {
+          var data_rd = myJson[xx][1][yy].time_detail;
+          data_rd = data_rd.year+"/"+map_find_index(data_rd.month)+"/"+data_rd.day+"-"+str_deal_time(myJson[xx][1][yy].time).hour+"时";
+          if (all_date1[aa] === data_rd) {
+            count_get1[arr_index_get1]++;
+          }
+        }
+      }
+      arr_index_get1++;
+    }
+    //console.log(all_date1);
+    
+  //获取单日主页请求数
+  
+
+    //获取单日总请求数
+    for (var aa in all_date) {
+      count_get[arr_index_get] = 0;
+      for (var xx in myJson) {
+        for (var yy in myJson[xx][1]) {
+          //console.log(myJson[xx][1][yy]);
+          var data_rd = myJson[xx][1][yy].time_detail;
+          data_rd = data_rd.year+"/"+map_find_index(data_rd.month)+"/"+data_rd.day;
+          if (data_rd == all_date[aa]) {
+            count_get[arr_index_get]++;
+          }
+        }
+      }
+      arr_index_get++;
+    }
+	all_date = all_date.sort();//对日期进行升序排序
+    //console.log(count_get);
+	//console.log(all_date);
+
+  var count_get_ind = new Array();
+  var myJson1 = count_get_ind_json_obj;
+  arr_index_get = 0;
+  for (var aa in all_date) {
+        count_get_ind[arr_index_get] = 0;
+        for (var x1 in myJson1) {
+          //console.log(myJson1[x1][1]);
+          if (count_json(myJson1[x1][1]) != 0) {
+            for (var y1 in myJson1[x1][1]) {
+              var data_rd = myJson1[x1][1][y1].time_detail;
+              data_rd = data_rd.year+"/"+map_find_index(data_rd.month)+"/"+data_rd.day;
+              if (data_rd === all_date[aa]) {
+                count_get_ind[arr_index_get]++;
+              }
+            }
+          }
+        }
+        arr_index_get++;
+  }
+
+    new Chart(document.getElementById("barchart"), {
+	    type: 'bar',
+	    data: {
+		    labels: all_date,
+		    datasets: [{
+			    data: count_get,
+			    label: '总请求数',
+			    backgroundColor: "#455577",
+			    borderWidth: 1,
+		    }, {
+			    data: count_get_ind,
+			    label: '主页请求数',
+			    backgroundColor: "#6699F6",
+			    borderWidth: 1,
+		    }]
+	    },
+	    options: {
+		    responsive: true,
+		    legend: {
+			    position: 'top',
+		    },
+	    }
+    });
+    new Chart(document.getElementById("linechart"), {
+	  type: 'line',
+	  data: {
+		  labels: all_date1,
+		  datasets: [{
+			  label: '请求数',
+			  backgroundColor: window.chartColors.navy,
+			  borderColor: window.chartColors.navy,
+			  data: count_get1,
+			  fill: false,
+		  }]
+	  },
+	  options: {
+		  responsive: true,
+		  // title: {
+		  // 	display: true,
+		  // 	text: 'Chart.js Line Chart'
+		  // },
+		  tooltips: {
+			  mode: 'index',
+			  intersect: false,
+		  },
+		  hover: {
+			  mode: 'nearest',
+			  intersect: true
+		  },
+		  scales: {
+			  xAxes: [{
+				  display: true,
+				  scaleLabel: {
+					  display: true,
+					  labelString: 'Hours'
+				  }
+			  }],
+			  yAxes: [{
+				  display: true,
+				  scaleLabel: {
+				  	display: true,
+					  labelString: 'Value'
+				  }
+			  }]
+	  	}
+	  }
+  });
+}
+
+//加载更多的请求数据，for card1
+function load_more_fetch_tri() {
+  if (data_morinfo_fetch_finished) {
+    load_more_fetch(data_morinfo_fetch_obj);
+  }
+}
+function load_more_fetch(more_info_input) {
+  document.getElementById("card1-1").innerHTML = more_info_input;
+}
+
+//数据处理
+function deal_data(myJson) {
+  var arr_index_get = 0;
+  //获取请求网址
+  var count_url = new Array();
+  var count_url_count = new Array();
+	var count_fet = new Array();
+  var count_fet_count = new Array();
+  var count_url_index = 0;
+	var count_fet_index = 0;
+
+  var temp_data = new Array();
+  var invalid_fetch = 0, not_found_fetch = 0, count_fetch_N = 0;
+  for (var xx in myJson) {
+    for (var yy in myJson[xx][1]) {
+      var data_url = myJson[xx][1][yy].url;
+		  var data_fet = myJson[xx][1][yy].fetch;
+      //console.log(data_url);
+		  if (count_fet.length) {
+		    count_fet[count_fet_index] = data_fet;
+		    count_fet_index++;
+		  } else if (val_in(count_fet, data_fet) == false) {
+		    count_fet[count_fet_index] = data_fet;
+		    count_fet_index++;
+		  }
+		
+      if (count_url.length == 0 && data_url !== "-") {
+        count_url[count_url_index] = data_url;
+        count_url_index++;
+      } else if (val_in(count_url, data_url) == false && data_url !== "-") {
+        count_url[count_url_index] = data_url;
+        count_url_index++;
+      }
+    }
+  }
+    //统计请求次数
+    count_url_index = 0;
+    for (var aa in count_url) {
+      count_url_count[count_url_index] = 0;
+      for (var xx in myJson) {
+        for (var yy in myJson[xx][1]) {
+          if (myJson[xx][1][yy].url == count_url[aa]) {
+            count_url_count[count_url_index]++;
+          }
+        }
+      }
+      count_url_index++;
+    }
+	  count_fet_index = 0;
+    for (var aa in count_fet) {
+      count_fet_count[count_fet_index] = 0;
+      for (var xx in myJson) {
+        for (var yy in myJson[xx][1]) {
+          if (myJson[xx][1][yy].fetch == count_fet[aa]) {
+            count_fet_count[count_fet_index]++;
+            var t_time_obj = myJson[xx][1][yy].time_detail;
+            temp_data.push(myJson[xx][1][yy].ip +  "<br /><b>At </b>" + t_time_obj.month + "/" + t_time_obj.day + " " + t_time_obj.hms + "<br /><b>From </b><a href='" + myJson[xx][1][yy].url + "'><b>" + myJson[xx][1][yy].url + "</b></a><br /><b>Using </b>" + myJson[xx][1][yy].ua);
+            if (check_info(myJson[xx][1][yy].info) == 404) {
+              not_found_fetch++;
+            } else if (check_info(myJson[xx][1][yy].info) == 400) {
+              invalid_fetch++;
+            }
+            count_fetch_N++;
+          }
+        }
+      }
+      count_fet_index++;
+      data_track_fet.push([{"fetch" : count_fet[aa]}, temp_data, [count_fetch_N, not_found_fetch, invalid_fetch]])
+      invalid_fetch = 0, not_found_fetch = 0, count_fetch_N = 0;
+      temp_data = new Array();
+    }
+
+    //将数组转化为字典，格式 次数：数据，以便排序
+	  var count_fet_dict = new Array();
+    for (var aa in count_fet) {
+      count_fet_dict[count_fet[aa]] = count_fet_count[aa];
+    }
+
+    var count_url_dict = new Array();
+    for (var aa in count_url) {
+      count_url_dict[count_url[aa]] = count_url_count[aa];
+      //console.log(count_url_count[aa]);
+    }
+    //console.log(count_url_dict);
+	
+	var res2 = Object.keys(count_url_dict).sort(function(b,a){ return count_url_dict[a]-count_url_dict[b]; }); // 字典元素按value值排序
+  var res3 = Object.keys(count_fet_dict).sort(function(b,a){ return count_fet_dict[a]-count_fet_dict[b]; }); // 字典元素按key值排序
+  var str_html = "";
+  for(var key in res2){ 
+    str_html += "<li><b>" + count_url_dict[res2[key]] + "次 :  </b><a href='"+res2[key]+"'>"+ res2[key] +"</a></li><br />";
+    //console.log(res2[key] + ' : ' + count_url_dict[res2[key]]);
+  }
+  document.getElementById("card2").innerHTML = str_html;
+  //Referer统计结束
+	
+  str_html = "";
+  data_morinfo_fetch_obj = "";
+  var add_st = "";
+
+	for(var key in res3) {
+    var arr_ua_fet_count = track_ua_fet(data_track_fet, res3[key], 1);
+    if (arr_ua_fet_count[1] > 0) {
+       add_st += '<a> </a><a> </a><span class="badge badge-pill badge-danger">404</span>';
+    }
+    if (arr_ua_fet_count[2] / arr_ua_fet_count[0] > 0.1) {
+       add_st += '<a> </a><a> </a><span class="badge badge-pill badge-danger">无效请求过多</span>';
+    }
+
+    var str_h = "<li>";
+    str_h += '<button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#myModal-ua-track" onclick="track_ua(data_track_fet, \''+ res3[key] +"', 1)\">追踪</button><a> </a><a> </a>";
+    str_h +=  "<b>" + count_fet_dict[res3[key]] + "次 :  </b><a href='"+res3[key]+"'>"+ res3[key] +"</a>"+add_st+"</li><br />";
+    if (count_fet_dict[res3[key]] > 1) { 
+       str_html += str_h
+    } else {
+      data_morinfo_fetch_obj += str_h
+    }
+    add_st = "";
+  }
+  data_morinfo_fetch_finished = true;
+  document.getElementById("card1").innerHTML = str_html;
+  //Fetch统计结束
+
+	//获取请求浏览器
+    count_url = new Array();
+    count_url_count = new Array();
+    count_url_index = 0;
+    for (var xx in myJson) {
+      for (var yy in myJson[xx][1]) {
+        var data_url = myJson[xx][1][yy].ua;
+        //console.log(data_url);
+        if (count_url.length == 0) {
+          count_url[count_url_index] = data_url;
+          count_url_index++;
+        } else if (val_in(count_url, data_url) == false) {
+            count_url[count_url_index] = data_url;
+            count_url_index++;
+        }
+      }
+    }
+    
+    //统计浏览器次数
+    count_url_index = 0;
+    temp_data = new Array();
+    invalid_fetch = 0, not_found_fetch = 0, count_fetch_N = 0;
+    for (var aa in count_url) {
+      count_url_count[count_url_index] = 0;
+      for (var xx in myJson) {
+        for (var yy in myJson[xx][1]) {
+          if (myJson[xx][1][yy].ua == count_url[aa]) {
+            count_url_count[count_url_index]++;
+            var t_time_obj = myJson[xx][1][yy].time_detail;
+            temp_data.push(myJson[xx][1][yy].ip +  "，" + t_time_obj.month + "/" + t_time_obj.day + " " + t_time_obj.hms + "--> <a href='" + myJson[xx][1][yy].fetch + "'><b>" + myJson[xx][1][yy].fetch + "</b></a>");
+            if (check_info(myJson[xx][1][yy].info) == 404) {
+              not_found_fetch++;
+            } else if (check_info(myJson[xx][1][yy].info) == 400) {
+              invalid_fetch++;
+            }
+            count_fetch_N++;
+          }
+        }
+      }
+      count_url_index++;
+      data_track_ua.push([{"ua":count_url[aa]}, temp_data, [count_fetch_N, not_found_fetch, invalid_fetch]])
+      invalid_fetch = 0, not_found_fetch = 0, count_fetch_N = 0;
+      temp_data = new Array();
+    }
+    count_url_dict = new Array();
+    for (var aa in count_url) {
+      count_url_dict[count_url[aa]] = count_url_count[aa];
+      //console.log(count_url_count[aa]);
+    }
+    //console.log(count_url_dict);
+    res2 = Object.keys(count_url_dict).sort(function(b,a){ return count_url_dict[a]-count_url_dict[b]; }); // 字典元素按value值排序
+    str_html = "";
+    add_st = "";
+    for(var key in res2){ 
+      if (res2[key].indexOf('bot.html') >= 0 || res2[key].indexOf('spider.html') >= 0 || res2[key].indexOf('dotbot') >= 0 || res2[key].indexOf('bingbot.htm') >= 0 || res2[key].indexOf('bots') >= 0 || res2[key].indexOf('Googlebot') >= 0 || res2[key].indexOf('robot') >= 0 || res2[key].indexOf('bot.com') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-info">搜索引擎</span>';
+      } else if (res2[key].indexOf('netcraft.com') >= 0 || res2[key].indexOf('CensysInspect') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-info">安全评估者</span>';
+      } else if (res2[key].indexOf('python-requests') >= 0 || res2[key].indexOf('Go http') >= 0 || res2[key].indexOf('Go-http') >= 0 || res2[key].indexOf('colly') >= 0 || res2[key].indexOf('package http') >= 0 || res2[key].indexOf('gbrmss') >= 0 || res2[key].indexOf('Dalvik') >= 0 || res2[key] == "Dark" || res2[key] == "Mozilla" || res2[key] == "Spider" || res2[key] == "android" || res2[key]  == "Hello, world" || res2[key]  == "Hello, World" || res2[key]  == "Mozilla/5.0") {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-warning">爬虫</span>';
+      } else if (res2[key].indexOf('masscan') >= 0 || res2[key].indexOf('zgrab') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-warning">扫描器</span>';
+      } else if (res2[key].indexOf('Gecko/') >= 0 && res2[key].indexOf('Firefox/') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-success">Firefox浏览器</span>';
+      } else if (res2[key].indexOf('UCBrowser') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-success">UC浏览器</span>';
+      } else if (res2[key].indexOf('Mozilla/5.0') >= 0 && res2[key].indexOf('Chrome/') >= 0 && res2[key].indexOf('HeyTapBrowser') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-success">OPPO浏览器</span>';
+      } else if (res2[key].indexOf('Mozilla/5.0') >= 0 && res2[key].indexOf('Chrome/') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-success">Chrome浏览器</span>';
+      } else if (res2[key].indexOf('Mozilla/') >= 0 && res2[key].indexOf('Trident') >= 0) {
+        add_st = '<a> </a><a> </a><span class="badge badge-pill badge-success">IE浏览器</span>';
+      } else {
+        add_st = "";
+      }
+      
+      var arr_ua_fet_count = track_ua_fet(data_track_ua, res2[key], 3);
+      if (arr_ua_fet_count[1]/arr_ua_fet_count[0] > 0.5) {
+        add_st += '<a> </a><a> </a><span class="badge badge-pill badge-danger">404过多</span>';
+      }
+      if (arr_ua_fet_count[2] > 5) {
+        add_st += '<a> </a><a> </a><span class="badge badge-pill badge-danger">无效请求过多</span>';
+      }
+
+      str_html +=  "<li>"+'<button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#myModal-ua-track" onclick="track_ua(data_track_ua, \''+ res2[key] +"')\">追踪</button>" + "<a> </a><b>" + count_url_dict[res2[key]] + "次 :  </b>" + res2[key] + add_st + "</li><br />";
+      //console.log(res2[key] + ' : ' + count_url_dict[res2[key]]);
+    }
+    document.getElementById("card3").innerHTML = str_html;//改变卡片的值
+
+    //获取请求IP
+    count_url = new Array();
+    count_url_count = new Array();
+    count_url_index = 0;
+    for (var xx in myJson) {
+      for (var yy in myJson[xx][1]) {
+        var data_url = myJson[xx][1][yy].ip;
+        //console.log(data_url);
+        if (count_url.length == 0) {
+          count_url[count_url_index] = data_url;
+          count_url_index++;
+        } else if (val_in(count_url, data_url) == false && data_url !== "-") {
+            count_url[count_url_index] = data_url;
+            count_url_index++;
+        }
+      }
+    }
+    //统计IP
+    count_url_index = 0;
+    for (var aa in count_url) {
+      count_url_count[count_url_index] = 0;
+      for (var xx in myJson) {
+        for (var yy in myJson[xx][1]) {
+          if (myJson[xx][1][yy].ip == count_url[aa]) {
+            count_url_count[count_url_index]++;
+          }
+        }
+      }
+      count_url_index++;
+    }
+    count_url_dict = new Array();
+    for (var aa in count_url) {
+      count_url_dict[count_url[aa]] = count_url_count[aa];
+      //console.log(count_url_count[aa]);
+    }
+    //console.log(count_url_dict);
+    res2 = Object.keys(count_url_dict).sort(function(b,a){ return count_url_dict[a]-count_url_dict[b]; }); // 字典元素按value值排序
+    str_html = "";
+    for(var key in res2){ 
+       str_html += "<li><b>" + count_url_dict[res2[key]] + "次 :  </b>" + res2[key] +"</li><br />";
+        //console.log(res2[key] + ' : ' + count_url_dict[res2[key]]);
+    }
+    var add_str = "";
+    var api = "";
+    if (str_html.indexOf("ID") >= 0) {
+      add_str = "<b>用户可能关闭了IP显示，替代为显示ID</b><br /><br />";
+      document.getElementById("card4").innerHTML = add_str + str_html;//改变卡片的值
+    } else {
+      str_html = "";
+      for(var key in res2){ 
+       str_html += "<li><b>" + count_url_dict[res2[key]] + "次 :  </b>" + res2[key] + '</li><br />';
+        //console.log(res2[key] + ' : ' + count_url_dict[res2[key]]);
+      }
+      document.getElementById("card4").innerHTML = add_str + str_html;//改变卡片的值
+    }
+    
+    //显示原始数据
+    str_html = "";
+    var count_it = 0;
+    var count_it1 = 0;
+    var count_it2 = 0;
+    var more_data_r = new Array(), strhtml = "";
+    for (var xx in myJson) {
+      for (var yy in myJson[xx][1]) {
+        if (myJson[xx][1][yy] !== "") {
+          count_it++;
+          if (count_it <= 400) {
+            str_html += "<li><b>" + myJson[xx][1][yy].ip + " :  </b><li>Referer: <a href='"+ myJson[xx][1][yy].url +"''>" + myJson[xx][1][yy].url +"</a></li>";
+            str_html += "<li>UA: " + myJson[xx][1][yy].ua + "</li>";
+            str_html += "<li>Time: " + myJson[xx][1][yy].time + "</li>";
+            str_html += "<li>Info: " + myJson[xx][1][yy].info + "</li>";
+            str_html += "</li><br />";
+          } else {
+            count_it1++;
+            strhtml += "<li><b>" + myJson[xx][1][yy].ip + " :  </b><li>Referer: <a href='"+ myJson[xx][1][yy].url +"''>" + myJson[xx][1][yy].url +"</a></li>";
+            strhtml += "<li>UA: " + myJson[xx][1][yy].ua + "</li>";
+            strhtml += "<li>Time: " + myJson[xx][1][yy].time + "</li>";
+            strhtml += "<li>Info: " + myJson[xx][1][yy].info + "</li>";
+            strhtml += "</li><br />";
+            if (count_it1 > 399) {
+              more_data_r.push(strhtml);
+              strhtml = "";
+              count_it1 = 0;
+              count_it2++;
+            }
+          }
+        }
+      }
+    }
+    if (count_it2*400 < count_it) {
+      more_data_r.push(strhtml);
+      count_it2++;
+    }
+    document.getElementById("card5").innerHTML = str_html + data_remain_set_tag(count_it2) + str_butten();//改变卡片的值
+    add_remain_data(more_data_r, );
+}
+
+
+
+function data_remain_set_tag(tag_num_input) {
+  var tag_id = data_remain_id_index;
+  var tag_str = "";
+  for (var iNdex=0;iNdex<tag_num_input;iNdex++) {
+    tag_str += '<div id="card' + tag_id + '-' + iNdex + 'loadmore"></div>';
+  }
+  return tag_str;
+}
+function str_butten() {
+  var str_but_html;
+  str_but_html = '<div class="card text-center card_border">';
+  str_but_html += '<div class="card-body">';
+  str_but_html += '<button type="button" class="btn btn-primary btn-style" onclick="show_remain_data('+data_remain_id_index+')">';
+  str_but_html += '加载剩余数据';
+  str_but_html += '</button>';
+  str_but_html += '</div></div>';
+  return str_but_html;
+}
+function add_remain_data(data_arry_input) {
+  var length_max = data_arry_input.length;
+  data_remain.push([{"index": 0, "length" : length_max}, data_arry_input]);
+  data_remain_id_index++;
+}
+function show_remain_data(tag_id_in) {
+  var showing_index = 0;
+  if (data_remain[tag_id_in][0]["index"] < data_remain[tag_id_in][0]["length"]) {
+    showing_index = data_remain[tag_id_in][0]["index"]++;
+    document.getElementById("card"+ tag_id_in +"-" + showing_index + "loadmore").innerHTML = data_remain[tag_id_in][1][showing_index];
+  } else {
+    window.alert("没有更多数据啦");
+  }
+}
+
+
+var int00 = self.setInterval("set_data()",100);
+var skip_it = false;
+function set_data() {
+  if (data_trans_finished == true) {
+    //console.log(data_json_obj);
+    
+    if (count_get_ind_finished) {
+      deal_data_chart(data_json_obj);
+      window.clearInterval(int00);
+    }
+
+    if (skip_it == false) {
+      document.getElementById("ip_num").innerHTML = count_json(data_json_obj);
+      deal_data(data_json_obj);
+      skip_it = true;
+    }
+
+  } else {
+    document.getElementById("ip_num").innerHTML = "Loading";
+ }
+}
+
+
+</script>
+</body>
+</html>
+  

@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-from pytz import timezone
+#from pytz import timezone
 import json
 
 
@@ -9,7 +9,7 @@ class nginx_read_log:
     self.f_genpath = gen_file_path
     self.list_inf = []
     self.read_file()
-    self.ip_api = "http://opendata.baidu.com/api.php?resource_id=6006&oe=utf8&query="
+    self.ip_api = "http://opendata.baidu.com/api.php?resource_id=6006&oe=utf8&query="#api是用于查询IP归属地用的
 
   def deal_time(self, input_date):
     time_info = input_date
@@ -97,14 +97,14 @@ class nginx_read_log:
           #排除列表
           for ii in sort_not:
             try:
-              if i["info"].index(ii) >= 0:
+              if i["fetch"].index(ii) >= 0:
                 a1 = False
                 break
             except:
               pass
           for ii in sort:
             try:
-              i["info"].index(ii)
+              i["fetch"].index(ii)
             except:
               a2 = False
               break
@@ -122,7 +122,7 @@ class nginx_read_log:
       fil.write(str_date)
 
   def gene_json(self, select_ = 0, file_n = "data.json", sort=[], sort_not=[]):
-    all_items_ = self.find_same_ip(sort, sort_not)
+    all_items_ = self.find_same_ip(sort, sort_not)#存入不重复的IP，同时处理不排除掉的列表和排除掉的列表
     #print(all_items_)#debug
     ret_list = []
 
@@ -149,7 +149,7 @@ class nginx_read_log:
     
 
 if __name__ == '__main__':
-  test = nginx_read_log("./access.log", "./templates/")
+  test = nginx_read_log("./access.log", "./dashboard/")
   test.gene_json(0, file_n = "data.json")
-  test.gene_json(0, file_n = "index_data.json", sort=["/static/img_ness/beian/beian"])
+  test.gene_json(0, file_n = "index_data.json", sort=["/static/img_ness/beian"])
   test.gene_date_update_json()
